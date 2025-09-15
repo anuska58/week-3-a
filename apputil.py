@@ -1,16 +1,16 @@
 # EXERCISE 1: Fibonacci
-def fib(n):
+def fibonacci(n):
     """Return the nth Fibonacci number."""
     if n == 0:
         return 0
     elif n == 1:
         return 1
-    return fib(n - 1) + fib(n - 2)
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-print(f"fib(10): {fib(10)}")
-print(f"fib(20): {fib(20)}")
-print(f"fib(5): {fib(5)}")
+print(f"fibonacci(10): {fibonacci(10)}")
+print(f"fibonacci(20): {fibonacci(20)}")
+print(f"fibonacci(5): {fibonacci(5)}")
 
 
 # EXERCISE 2: Binary Conversion
