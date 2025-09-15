@@ -43,7 +43,7 @@ print("\nBellevue Data Sample:")
 print(df_bellevue.head())
 
 
-def task_i():
+def task_1():
     """
     Return a list of all column names, sorted by missing values
     (least missing first, most missing last).
@@ -71,10 +71,10 @@ def task_i():
     return sorted_cols
 
 
-print("\nTask 1:", task_i())
+print("\nTask 1:", task_1())
 
 
-def task_ii():
+def task_2():
     """
     Return a DataFrame with 'year' and 'total_admissions'.
     Extracts year from the 'date_in' column.
@@ -88,10 +88,10 @@ def task_ii():
     return result
 
 
-print("\nTask 2:\n", task_ii())
+print("\nTask 2:\n", task_2())
 
 
-def task_iii():
+def task_3():
     """
     Return a Series with gender as index and average age as values.
     """
@@ -116,7 +116,7 @@ def task_iii():
     return result
 
 
-print("\nTask 3:\n", task_iii())
+print("\nTask 3:\n", task_3())
 
 
 def task_4():
@@ -124,12 +124,12 @@ def task_4():
     Return a list of the 5 most common professions (most common first).
     """
     df = df_bellevue.copy()
-    if "profession" not in df.columns:
-        print("No 'profession' column found in dataset.")
-        return []
+    df = df.dropna(subset=["profession"])
     df["profession"] = df["profession"].astype(str).str.strip().str.lower()
-    if df["profession"].isna().any() or (df["profession"] == "").any():
-        print("Some 'profession' values are missing or blank.")
+    df_clean = df[df["profession"] != ""]
+    if df_clean.empty:
+        print("No valid profession data found.")
+        return []
     top5 = df["profession"].value_counts().head(5).index.tolist()
     return top5
 
